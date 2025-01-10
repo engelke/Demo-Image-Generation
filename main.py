@@ -13,7 +13,7 @@ def home():
     if request.method == "GET":    # No form submitted
         return render_template("index.html")
 
-    # Should be POST with a form submitted
+    # POST with a form submitted
     prompt = request.form["prompt"]
     image_data = generate_image(prompt)
     image_url = get_url(image_data)
@@ -21,7 +21,7 @@ def home():
 
 
 def generate_image(prompt):
-    model = ImageGenerationModel.from_pretrained("imagegeneration@002")
+    model = ImageGenerationModel.from_pretrained("imagegeneration@006")
     response = model.generate_images(prompt=prompt)[0]
     with tempfile.NamedTemporaryFile("wb") as f:
         filename = f.name
