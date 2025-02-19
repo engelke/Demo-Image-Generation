@@ -15,8 +15,11 @@ def home():
 
     # POST with a form submitted
     prompt = request.form["prompt"]
+    print(f"DEBUG: Prompt is {prompt}.")
     image_data = generate_image(prompt)
+    print(f"DEBUG: Generated image is {len(image_data)} bytes long.")
     image_url = get_url(image_data)
+    print(f"DEBUG: URL is {len(image_url)} bytes long.")
     return render_template("index.html", prompt=prompt, image_url=image_url)
 
 
